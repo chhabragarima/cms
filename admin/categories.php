@@ -1,10 +1,9 @@
-<?php include "includes/header.php";
+<?php include "includes/admin_header.php";
 ?>
     <div id="wrapper">
 
-        <!-- Navigation -->
 <?php
-        include "includes/navigation.php";
+        include "includes/admin_navigation.php";
         ?>      
         <div id="page-wrapper">
 
@@ -19,7 +18,11 @@
                         </h1>
                            
                            <div class="col-xs-6">
-                           <form action="">
+                           
+                            <?php 
+                                   insert_categories();
+                               ?>                           
+                           <form action="" method="post">
                                <div class="form-group">
                                    <label for="cat-title">Add Category</label>
                                <input type="text" class="form-control" name="cat_title">
@@ -28,17 +31,48 @@
                                <input type="submit" name="submit" value="Add Category" class="btn btn-primary">
                                </div>
                            
-                           </form>
-                           
+                           </form>               
                     </div>
+
+         
+                     
+                    <div class="col-xs-6">
+                    <table class="table table-bordered table-hover">    
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category Title</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+<?php //FIND ALL QUERIES HERE
+   findAllCategories();
+?>
+<?php //DELETE CATEGORY
+        delete_categories();
+?>
+                    </tbody>
+                    </table>
+                    </div>
+<?php 
+  if(isset($_GET['edit']))
+  {
+   $cat_id=$_GET['edit'];
+      include "includes/update.php";
+  }
+?>                   
+    
+                
                 </div>
                 <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
 
         </div>
+            
         <!-- /#page-wrapper -->
-<?php include "includes/footer.php";
+<?php include "includes/admin_footer.php";
 ?>
   
