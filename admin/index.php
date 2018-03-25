@@ -1,11 +1,12 @@
 <?php include "includes/admin_header.php";
 ?>
+
     <div id="wrapper">
-       
+
         <!-- Navigation -->
-<?php
-        include "includes/admin_navigation.php";
-        ?>      
+<?php include "includes/admin_navigation.php";
+?>
+       
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -14,10 +15,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to Admin
+                            Welcome to admin
                             <small>Author</small>
                         </h1>
-                           
+                       
                     </div>
                 </div>
                 <!-- /.row -->
@@ -26,7 +27,14 @@
             <!-- /.container-fluid -->
 
         </div>
+        
+        
+        
+        
+        
+        
+        
         <!-- /#page-wrapper -->
-<?php include "includes/admin_footer.php";
+
+   <?php include "includes/admin_footer.php";
 ?>
-  

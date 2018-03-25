@@ -1,4 +1,4 @@
-   <table class="table table-bordered table-hover">
+ <table class="table table-bordered table-hover">
                 <thead>
                     <th>Id</th>
                     <th>Author</th>
@@ -9,9 +9,11 @@
                     <th>Tags</th>
                     <th>Comments</th>
                     <th>Date</th>
+                    <th></th>
+                    <th></th>
                 </thead>
                 <tbody>
-                    
+                   
 <?php 
         $query="SELECT * FROM posts";
         $all_selected_posts=mysqli_query($connection,$query);
@@ -26,10 +28,21 @@
                         echo"<td>{$row['post_tags']}</td>";
                         echo"<td>{$row['post_comment_count']}</td>";
                         echo"<td>{$row['post_date']}</td>";
+                        echo"<td><a href='posts.php?source=edit_post&p_id={$row['post_id']}'>EDIT</a></td>";
+                        echo"<td><a href='posts.php?delete={$row['post_id']}'>DELETE</a></td>";
                         echo"</tr>";              
         }
 ?>                       
-                       
+<?php if(isset($_GET['delete']))
+{
+    $post_id=$_GET['delete'];
+    $query="DELETE FROM posts WHERE post_id={$post_id}";
+    $delete_query=mysqli_query($connection,$query);
+    header("Location: posts.php");
+}
+?>
+                    
+                
                     
                 </tbody>
                 </table>

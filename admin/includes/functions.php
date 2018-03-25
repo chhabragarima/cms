@@ -1,4 +1,22 @@
 <?php 
+function escape($string) {
+
+global $connection;
+
+return mysqli_real_escape_string($connection, trim($string));
+
+
+}
+
+
+function confirmQuery($result)
+{   global $connection;
+    if(!$result)
+            {
+                die("QUERY FAILED".mysqli_error($connection));
+            }
+}
+
 function insert_categories()
 {   global $connection;
     if(isset($_POST['submit']))
@@ -23,7 +41,9 @@ function insert_categories()
 function findAllCategories()
 {   global $connection;
      $query="SELECT * FROM categories";
-    $select_all_categories=mysqli_query($connection,$query); while($row=mysqli_fetch_assoc($select_all_categories))
+    $select_all_categories=mysqli_query($connection,$query);
+    confirmQuery($select_all_categories);
+ while($row=mysqli_fetch_assoc($select_all_categories))
         {
             $cat_id=$row['cat_id'];
             $cat_title=$row['cat_title'];

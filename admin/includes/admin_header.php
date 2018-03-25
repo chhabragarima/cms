@@ -1,9 +1,5 @@
-<?php ob_start(); ?> // output buffering bufferes requests in the header of the scripts so that all of the requests can be send at the same time.
-<?php include "../includes/db.php";
-        include"functions.php";
-?>
-
-
+<?php ob_start(); // output buffereing
+include "..\includes\db.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
