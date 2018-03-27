@@ -22,8 +22,17 @@
                         echo"<td>{$row['post_id']}</td>";
                         echo"<td>{$row['post_author']}</td>";    
                         echo"<td>{$row['post_title']}</td>";
-                        echo"<td>{$row['post_category_id']}</td>";
-                        echo"<td>{$row['post_status']}</td>";
+            
+            
+                   $query="SELECT * FROM categories WHERE cat_id={$row['post_category_id']}";
+                   $select_all_categories=mysqli_query($connection,$query);
+                    while($row1=mysqli_fetch_assoc($select_all_categories))
+                   {
+                            $cat_id=$row1['cat_id'];
+                            $cat_title=$row1['cat_title'];         
+                    }
+                       echo"<td>{$cat_title}</td>";
+                       echo"<td>{$row['post_status']}</td>";
                         echo"<td><img width='100' src='../images/{$row['post_image']}'></td>";
                         echo"<td>{$row['post_tags']}</td>";
                         echo"<td>{$row['post_comment_count']}</td>";

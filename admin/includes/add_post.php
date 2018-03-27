@@ -4,7 +4,7 @@
         {
             $post_title=$_POST['title'];
             $post_author=$_POST['author'];
-            $post_category_id=$_POST['post_category_id'];
+            $post_category_id=$_POST['post_category'];
             $post_status=$_POST['post_status'];
             
             $post_image=$_FILES['image']['name'];
@@ -31,13 +31,26 @@
         <label for="title">Post Title</label>
         <input type="text" class="form-control" name="title">
     </div>
-    
-   <div class="form-group">
+<div class="form-group">
        <label for="post_category">Post Category ID</label>
-       <input type="text" class="form-control" name="post_category_id">
+      <select name="post_category" id="">
+      <?php
+         
+            $query="SELECT * FROM categories";
+           $select_all_categories=mysqli_query($connection,$query);
+          confirmQuery($select_all_categories);
+    while($row=mysqli_fetch_assoc($select_all_categories))
+        {
+            $cat_id=$row['cat_id'];
+            $cat_title=$row['cat_title']; 
+            echo "<option value='$cat_id'>{$cat_title}</option>";
+    }
+          ?>
+       </select>
     </div>
-    
-   <div class="form-group">
+   
+      
+       <div class="form-group">
        <label for="title">Post Author</label>
        <input type="text" class="form-control" name="author">
     </div>
