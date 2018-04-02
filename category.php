@@ -12,8 +12,13 @@ include "includes/navigation.php";
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 
-                <?php
-                    $query="SELECT * from posts";
+<?php
+            if(isset($_GET['category']))
+            {
+                $post_category_id=$_GET['category'];
+            }
+                
+                    $query="SELECT * from posts WHERE post_category_id=$post_category_id";
                     $select_all_posts=mysqli_query($connection,$query);
                     
         while($row=mysqli_fetch_assoc($select_all_posts)){
@@ -23,8 +28,6 @@ include "includes/navigation.php";
                 $post_date=$row['post_date'];
                 $post_image=$row['post_image'];
                 $post_content=substr($row['post_content'],0,300);
-            
-            
                 ?>
                    
                  <h1 class="page-header">
